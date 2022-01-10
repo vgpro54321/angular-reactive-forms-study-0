@@ -1,0 +1,145 @@
+<form [formGroup]="profileForm" (ngSubmit)="onSubmit()">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6">
+        <label class="form-label" for="first-nanme">First Name:</label>
+
+        <input
+          class="form-control"
+          id="first-name"
+          type="text"
+          formControlName="firstName"
+        />
+      </div>
+
+      <div class="col-md-6">
+        <label class="form-label" for="last-name">Last Name:</label>
+
+        <input
+          class="form-control"
+          id="last-name"
+          type="text"
+          formControlName="lastName"
+        />
+      </div>
+    </div>
+
+    <div class="row" formGroupName="address">
+      <div class="col-sm-6 h2 my-3">Address</div>
+    </div>
+
+    <div class="row" formGroupName="address">
+      <div class="col-12">
+        <label class="form-label" for="street">Street:</label>
+
+        <input
+          class="form-control"
+          id="street"
+          type="text"
+          formControlName="street"
+        />
+      </div>
+    </div>
+
+    <div class="row" formGroupName="address">
+      <div class="col-sm-6">
+        <label class="form-label" for="city">City:</label>
+
+        <input
+          class="form-control"
+          id="city"
+          type="text"
+          formControlName="city"
+        />
+      </div>
+    </div>
+
+    <div class="row" formGroupName="address">
+      <div class="col-sm-6">
+        <label class="form-label" for="city">State:</label>
+
+        <input
+          class="form-control"
+          id="state"
+          type="text"
+          formControlName="state"
+        />
+      </div>
+
+      <div class="col-sm-6">
+        <label class="form-label" for="zip">Zip:</label>
+
+        <input
+          class="form-control"
+          id="zip"
+          type="text"
+          formControlName="zip"
+        />
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-sm-6 h2 my-3">Aliases</div>
+    </div>
+
+    <div class="row">
+      <div class="col-12">
+        <button class="btn btn-secondary" (click)="addAlias()">
+          + Add Alias
+        </button>
+      </div>
+    </div>
+
+    <div
+      class="row"
+      formArrayName="aliases"
+      *ngFor="let alias of aliases.controls; let i = index"
+    >
+      <div class="col-12">
+        <label class="form-label" for="alias-{{ i }}">Alias:</label>
+
+        <input
+          class="form-control"
+          id="alias-{{ i }}"
+          type="text"
+          [formControlName]="i"
+        />
+
+        <button class="btn btn-secondary inline" (click)="removeAliasAt(i)">
+          Remove
+        </button>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col my-3">
+        <button class="btn btn-secondary" (click)="onUpdateProfile()">
+          Update Profile
+        </button>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col my-3">
+        <button
+          type="submit"
+          class="btn btn-primary"
+          [disabled]="!profileForm.valid"
+        >
+          Submit
+        </button>
+      </div>
+    </div>
+    <!-- 
+    <select id="cars" name="cars" class="form-select">
+      <option value="volvo">Volvo XC90</option>
+      <option value="saab">Saab 95</option>
+      <option value="mercedes">Mercedes SLK</option>
+      <option value="audi">Audi TT</option>
+    </select> -->
+
+    <p>Status: {{ profileForm.status | json }}</p>
+    <p>IsValid: {{ profileForm.valid | json }}</p>
+    <p>Value: {{ profileForm.value | json }}</p>
+  </div>
+</form>

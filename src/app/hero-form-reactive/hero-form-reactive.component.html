@@ -1,0 +1,36 @@
+<div [formGroup]="heroForm">
+  <label class="form-label" for="name">Name:</label>
+  <input
+    class="form-control"
+    type="text"
+    id="name"
+    formControlName="name"
+    required
+  />
+
+  <app-alter-ego [externalForm]="heroForm"> </app-alter-ego>
+
+  <!-- <label class="form-label" for="alterEgo">AlterEgo:</label>
+  <input
+    class="form-control"
+    type="text"
+    id="alterEgo"
+    formControlName="alterEgo"
+  /> -->
+
+  <label class="form-label" for="power">Power:</label>
+
+  <select class="form-select" id="power" formControlName="power">
+    <option value="Flight">Flight</option>
+  </select>
+</div>
+
+<p>Status: {{ heroForm.status | json }}</p>
+<p>IsValid: {{ heroForm.valid | json }}</p>
+<p>Value: {{ heroForm.value | json }}</p>
+<div
+  *ngIf="heroForm.errors?.['identityRevealed'] && (heroForm.touched || heroForm.dirty)"
+  class="cross-validation-error-message alert alert-danger"
+>
+  Name cannot match alter ego.
+</div>
