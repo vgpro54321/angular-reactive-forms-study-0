@@ -8,6 +8,7 @@ import { NameEditorComponent } from './name-editor/name-editor.component';
 import { ProfileEditorComponent } from './profile-editor/profile-editor.component';
 import { HeroFormReactiveComponent } from './hero-form-reactive/hero-form-reactive.component';
 import { AlterEgoComponent } from './hero-form-reactive/alter-ego/alter-ego.component';
+import { RequiredValidatorComponent } from './hero-form-reactive/required-validator/required-validator.component';
 
 @NgModule({
   imports: [BrowserModule, FormsModule, ReactiveFormsModule],
@@ -18,6 +19,7 @@ import { AlterEgoComponent } from './hero-form-reactive/alter-ego/alter-ego.comp
     ProfileEditorComponent,
     HeroFormReactiveComponent,
     AlterEgoComponent,
+    RequiredValidatorComponent,
   ],
   bootstrap: [AppComponent],
 })

@@ -1,0 +1,9 @@
+Required validator works!
+<ng-container *ngIf="errors?.required; let error">
+  <div class="alert">
+    {{ errorMessage }}
+  </div>
+  <div>
+    {{ error | json }}
+  </div>
+</ng-container>

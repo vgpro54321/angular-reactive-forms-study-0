@@ -22,12 +22,22 @@
 
   <select class="form-select" id="power" formControlName="power">
     <option value="Flight">Flight</option>
+    <option value="Sight">X-ray vision</option>
+    <option value="Brain">Really Smart</option>
   </select>
 </div>
 
 <p>Status: {{ heroForm.status | json }}</p>
 <p>IsValid: {{ heroForm.valid | json }}</p>
 <p>Value: {{ heroForm.value | json }}</p>
+<p>Value: {{ heroForm.get('name').errors | json }}</p>
+<p>Value: {{ transformErrors(heroForm.get('name').errors) }}</p>
+
+<app-required-validator
+  [errors]="heroForm.get('name').errors"
+  errorMessage="Hero name is required"
+></app-required-validator>
+
 <div
   *ngIf="heroForm.errors?.['identityRevealed'] && (heroForm.touched || heroForm.dirty)"
   class="cross-validation-error-message alert alert-danger"

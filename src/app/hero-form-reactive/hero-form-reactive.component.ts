@@ -43,4 +43,9 @@ export class HeroFormReactiveComponent implements OnInit {
 
     console.log(this.heroForm.value);
   }
+
+  transformErrors(errors: any): any {
+    console.log(errors);
+    return errors;
+  }
 }
